@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MAM Loralouet' – Maison d'Assistantes Maternelles à Bourgneuf-la-Forêt</title>
+  <meta name="description" content="Betty et Élodie vous accueillent dans leur MAM Loralouet' à Bourgneuf-la-Forêt. Agrément depuis 2014, jusqu'à 8 enfants dans un cadre chaleureux et familial en campagne mayennaise." />
+  <meta name="keywords" content="assistante maternelle, Bourgneuf-la-Forêt, MAM, Loralouet, garde enfant, crèche familiale, Saint-Hilaire-du-Maine, Mayenne" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sage: #ADC2A9;
+      --sage-dark: #8aaa84;
+      --sage-light: #d0dece;
+      --rose: #E6B3B3;
+      --rose-light: #f4d4d4;
+      --beige: #F5F5DC;
+      --beige-dark: #e8e8c4;
+      --text: #3d3830;
+      --text-light: #6b6358;
+      --white: #fffffe;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      color: var(--text);
+      background: var(--beige);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
+      background: rgba(245,245,220,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--sage-light);
+      transition: box-shadow 0.3s;
+    }
+
+    nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-logo span { color: var(--sage-dark); font-style: italic; }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+
+    .nav-links a {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-light);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--sage-dark); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 72px;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5rem 4rem 5rem 5rem;
+      background: var(--beige);
+      position: relative;
+    }
+
+    .hero-left::after {
+      content: '';
+      position: absolute;
+      bottom: -60px;
+      left: 0;
+      width: 100%;
+      height: 120px;
+      background: var(--beige);
+      clip-path: ellipse(55% 60px at 0% 50%);
+      z-index: 1;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: var(--rose-light);
+      color: var(--text-light);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--sage-dark);
+    }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-light);
+      line-height: 1.8;
+      max-width: 440px;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      border-radius: 50px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.12); }
+
+    .btn-primary {
+      background: var(--sage-dark);
+      color: var(--white);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--rose);
+      color: var(--text);
+    }
+
+    .hero-right {
+      position: relative;
+      background: var(--sage-light);
+      overflow: hidden;
+    }
+
+    .hero-shapes {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Illustration décorative en SVG */
+    .hero-illustration {
+      width: 80%;
+      max-width: 420px;
+      animation: floatUp 1s 0.4s ease both;
+    }
+
+    /* ── SECTION CHIFFRES ── */
+    .stats {
+      background: var(--sage-dark);
+      color: var(--white);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      text-align: center;
+    }
+
+    .stat-item {
+      padding: 2.5rem 2rem;
+      border-right: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .stat-item:last-child { border-right: none; }
+
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 600;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      opacity: 0.8;
+      letter-spacing: 0.04em;
+      margin-top: 0.25rem;
+    }
+
+    /* ── PRÉSENTATION ── */
+    .section { padding: 6rem 5rem; }
+
+    .section-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sage-dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      line-height: 1.25;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title em { font-style: italic; color: var(--sage-dark); }
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      color: var(--text-light);
+      line-height: 1.9;
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
+    }
+
+    .about-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .person-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 1.75rem;
+      border-left: 4px solid var(--rose);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
+    }
+
+    .person-card:nth-child(2) { border-left-color: var(--sage-dark); }
+    .person-card:hover { transform: translateX(4px); }
+
+    .person-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .person-badge {
+      display: inline-block;
+      background: var(--rose-light);
+      color: var(--text-light);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.75rem;
+      border-radius: 50px;
+      margin-bottom: 0.75rem;
+    }
+
+    .person-card:nth-child(2) .person-badge {
+      background: var(--sage-light);
+    }
+
+    .person-desc {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    /* ── LIEU ── */
+    .lieu-section {
+      background: var(--white);
+    }
+
+    .lieu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin-top: 3rem;
+    }
+
+    .lieu-card {
+      background: var(--beige);
+      border-radius: 18px;
+      padding: 2rem;
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+    }
+
+    .lieu-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--sage-light);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .lieu-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .lieu-card p {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+
+    /* ── JOURNÉE TYPE ── */
+    .journee-section { background: var(--beige); }
+
+    .timeline {
+      margin-top: 3rem;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 90px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--sage-light);
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 1.5rem;
+      align-items: center;
+    }
+
+    .timeline-time {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--sage-dark);
+      width: 80px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .timeline-dot {
+      width: 14px;
+      height: 14px;
+      background: var(--rose);
+      border-radius: 50%;
+      flex-shrink: 0;
+      border: 3px solid var(--beige);
+      box-shadow: 0 0 0 2px var(--rose);
+      z-index: 1;
+    }
+
+    .timeline-content {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 1rem 1.5rem;
+      font-size: 0.95rem;
+      color: var(--text-light);
+      flex: 1;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+
+    /* ── PLACES ── */
+    .places-section {
+      background: var(--rose-light);
+      text-align: center;
+    }
+
+    .places-section .section-title { color: var(--text); }
+
+    .places-badge {
+      display: inline-block;
+      background: var(--white);
+      border-radius: 100px;
+      padding: 1.5rem 3rem;
+      margin: 2rem 0;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    }
+
+    .places-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      color: var(--sage-dark);
+      display: block;
+      line-height: 1;
+    }
+
+    .places-label {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      letter-spacing: 0.06em;
+    }
+
+    .places-note {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+    }
+
+    /* ── CONTACT BANDE ── */
+    .contact-band {
+      background: var(--sage-dark);
+      padding: 4rem 5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .contact-band-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--white);
+      line-height: 1.3;
+    }
+
+    .contact-band-text em {
+      font-style: italic;
+      opacity: 0.8;
+    }
+
+    .btn-light {
+      background: var(--white);
+      color: var(--sage-dark);
+      white-space: nowrap;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.6);
+      padding: 2.5rem 5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+
+    footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      color: var(--white);
+      font-size: 1.1rem;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes floatUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Observe scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { min-height: 300px; }
+      .hero-left { padding: 4rem 2rem; }
+      .about { grid-template-columns: 1fr; gap: 2rem; }
+      .section { padding: 4rem 2rem; }
+      .stats { grid-template-columns: 1fr; }
+      .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.15); }
+      .lieu-grid { grid-template-columns: 1fr; }
+      .contact-band { flex-direction: column; text-align: center; padding: 3rem 2rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem; }
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1rem; }
+      .timeline::before { left: 70px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="main-nav">
+    <a href="index.html" class="nav-logo">MAM <span>Loralouet'</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="#presentation">La MAM</a></li>
+      <li><a href="#lieu">Le lieu</a></li>
+      <li><a href="contrat.html">Contrat</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <span class="hero-tag">Agrément depuis 2014 · Mayenne (53)</span>
+      <h1 class="hero-title">
+        Un nid douillet<br/>pour les <em>tout-petits</em>
+      </h1>
+      <p class="hero-subtitle">
+        Betty et Élodie vous accueillent dans leur Maison d'Assistantes Maternelles, en pleine campagne mayennaise, dans un cadre chaleureux et familial.
+      </p>
+      <div class="hero-ctas">
+        <a href="contact.html" class="btn btn-primary">Prendre contact</a>
+        <a href="#presentation" class="btn btn-outline">Découvrir la MAM</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-shapes">
+        <!-- Illustration SVG décorative -->
+        <svg class="hero-illustration" viewBox="0 0 400 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Maison -->
+          <rect x="80" y="190" width="240" height="180" rx="8" fill="#fffffe" opacity="0.9"/>
+          <polygon points="80,190 200,90 320,190" fill="#ADC2A9"/>
+          <!-- Cheminée -->
+          <rect x="230" y="110" width="28" height="50" rx="4" fill="#8aaa84"/>
+          <!-- Fenêtre gauche -->
+          <rect x="110" y="230" width="70" height="60" rx="6" fill="#d0dece"/>
+          <line x1="145" y1="230" x2="145" y2="290" stroke="#ADC2A9" stroke-width="2"/>
+          <line x1="110" y1="260" x2="180" y2="260" stroke="#ADC2A9" stroke-width="2"/>
+          <!-- Fenêtre droite -->
+          <rect x="220" y="230" width="70" height="60" rx="6" fill="#f4d4d4"/>
+          <line x1="255" y1="230" x2="255" y2="290" stroke="#E6B3B3" stroke-width="2"/>
+          <line x1="220" y1="260" x2="290" y2="260" stroke="#E6B3B3" stroke-width="2"/>
+          <!-- Porte -->
+          <rect x="163" y="300" width="74" height="70" rx="6" fill="#e8e8c4"/>
+          <circle cx="228" cy="336" r="4" fill="#8aaa84"/>
+          <!-- Sol/herbe -->
+          <ellipse cx="200" cy="375" rx="180" ry="18" fill="#8aaa84" opacity="0.25"/>
+          <!-- Petites fleurs -->
+          <circle cx="100" cy="368" r="8" fill="#E6B3B3" opacity="0.7"/>
+          <circle cx="300" cy="368" r="8" fill="#E6B3B3" opacity="0.7"/>
+          <circle cx="60" cy="360" r="5" fill="#ADC2A9" opacity="0.6"/>
+          <circle cx="340" cy="360" r="5" fill="#ADC2A9" opacity="0.6"/>
+          <!-- Nuages -->
+          <ellipse cx="60" cy="60" rx="40" ry="22" fill="white" opacity="0.6"/>
+          <ellipse cx="90" cy="50" rx="32" ry="20" fill="white" opacity="0.6"/>
+          <ellipse cx="330" cy="80" rx="36" ry="20" fill="white" opacity="0.5"/>
+          <ellipse cx="355" cy="68" rx="28" ry="18" fill="white" opacity="0.5"/>
+          <!-- Soleil -->
+          <circle cx="320" cy="40" r="22" fill="#F5F5DC" opacity="0.9"/>
+          <!-- Rayons soleil -->
+          <line x1="320" y1="10" x2="320" y2="5" stroke="#e8e8c4" stroke-width="3" stroke-linecap="round"/>
+          <line x1="320" y1="70" x2="320" y2="75" stroke="#e8e8c4" stroke-width="3" stroke-linecap="round"/>
+          <line x1="290" y1="40" x2="285" y2="40" stroke="#e8e8c4" stroke-width="3" stroke-linecap="round"/>
+          <line x1="350" y1="40" x2="355" y2="40" stroke="#e8e8c4" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat-item">
+      <span class="stat-number">2014</span>
+      <span class="stat-label">Année d'agrément</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">8</span>
+      <span class="stat-label">Enfants accueillis simultanément</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">5</span>
+      <span class="stat-label">Places disponibles actuellement</span>
+    </div>
+  </div>
+
+  <!-- PRÉSENTATION -->
+  <section class="section" id="presentation">
+    <div class="about">
+      <div class="about-text">
+        <p class="section-tag">Qui sommes-nous ?</p>
+        <h2 class="section-title">Deux assistantes passionnées,<br/><em>un seul objectif</em></h2>
+        <p>
+          La MAM Loralouet' est une Maison d'Assistantes Maternelles où Betty et Élodie unissent leurs compétences pour offrir aux enfants un environnement sécurisant, bienveillant et adapté à leur rythme.
+        </p>
+        <p>
+          Ce qui nous tient à cœur : accueillir chaque enfant dans un lieu chaleureux et familial, où ils se sentent comme chez eux, et accompagner leur développement à travers des activités créatives et ludiques.
+        </p>
+        <p>
+          Chacune agréée pour 4 enfants, nous pouvons accueillir jusqu'à 8 enfants ensemble dans notre maison en campagne.
+        </p>
+      </div>
+      <div class="about-cards reveal">
+        <div class="person-card">
+          <div class="person-name">Betty</div>
+          <span class="person-badge">Agréée depuis 2014</span>
+          <p class="person-desc">
+            Maman de 4 enfants, Betty est une personne solaire qui aime accompagner les enfants dans leur développement et leur éveil au quotidien. Son expérience de plus de 10 ans est un gage de confiance pour les familles.
+          </p>
+        </div>
+        <div class="person-card">
+          <div class="person-name">Élodie</div>
+          <span class="person-badge">Récemment agréée</span>
+          <p class="person-desc">
+            Dynamique et créative, Élodie a à cœur de proposer des activités variées et adaptées. Elle contribue chaque jour au bien-être et à l'épanouissement des enfants dans un environnement bienveillant.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIEU -->
+  <section class="section lieu-section" id="lieu">
+    <p class="section-tag">Notre cadre de vie</p>
+    <h2 class="section-title">Une maison en <em>pleine campagne</em></h2>
+    <div class="lieu-grid reveal">
+      <div class="lieu-card">
+        <div class="lieu-icon">🏡</div>
+        <div>
+          <h3>La maison</h3>
+          <p>Un sas d'entrée, une cuisine, un espace bébés, un espace pour les plus grands, un coin change — et 4 chambres à l'étage pour la sieste.</p>
+        </div>
+      </div>
+      <div class="lieu-card">
+        <div class="lieu-icon">🌳</div>
+        <div>
+          <h3>L'extérieur</h3>
+          <p>Un terrain clos à l'extérieur pour que les enfants puissent jouer en toute sécurité au grand air, au rythme des saisons.</p>
+        </div>
+      </div>
+      <div class="lieu-card">
+        <div class="lieu-icon">📍</div>
+        <div>
+          <h3>Localisation</h3>
+          <p>Axe Bourgneuf-la-Forêt — à 5 km de Saint-Hilaire-du-Maine et 5 km de Bourgneuf-la-Forêt, en Mayenne (53).</p>
+        </div>
+      </div>
+      <div class="lieu-card">
+        <div class="lieu-icon">🚗</div>
+        <div>
+          <h3>Facilement accessible</h3>
+          <p>Situé sur un axe bien desservi de la campagne mayennaise, facile d'accès pour les familles des alentours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNÉE TYPE -->
+  <section class="section journee-section" id="journee">
+    <p class="section-tag">Organisation</p>
+    <h2 class="section-title">Une journée <em>rythmée et bienveillante</em></h2>
+    <div class="timeline reveal">
+      <div class="timeline-item">
+        <div class="timeline-time">7h – 9h</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">Accueil des enfants — temps de jeux libres pour bien commencer la journée</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">9h – 11h30</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">Activités proposées, promenade, bibliothèque, RPE</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">11h30 – 13h</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">Repas dans la bonne humeur</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">13h – 16h</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">Sieste et temps calme</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">16h – 17h</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">Goûter</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">17h – 18h</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">Jeux libres et préparation pour les départs</div>
+      </div>
+    </div>
+    <p style="margin-top: 2rem; color: var(--text-light); font-size: 0.9rem;">
+      ⏰ Horaires : 7h à 18h selon les besoins. Adaptable à la demande.
+    </p>
+  </section>
+
+  <!-- PLACES DISPO -->
+  <section class="section places-section">
+    <p class="section-tag">Disponibilités</p>
+    <h2 class="section-title">Des places encore disponibles</h2>
+    <div class="places-badge reveal">
+      <span class="places-number">5</span>
+      <span class="places-label">places disponibles actuellement</span>
+    </div>
+    <p class="places-note">N'hésitez pas à nous contacter pour organiser une visite et discuter de vos besoins.</p>
+    <br/>
+    <a href="contact.html" class="btn btn-primary">Nous contacter</a>
+  </section>
+
+  <!-- BANDE CONTACT -->
+  <div class="contact-band">
+    <div class="contact-band-text">
+      Envie d'en savoir plus ?<br/>
+      <em>Venez nous rendre visite !</em>
+    </div>
+    <a href="contact.html" class="btn btn-light">Prendre rendez-vous →</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">MAM Loralouet'</div>
+    <div>Bourgneuf-la-Forêt · Mayenne (53)</div>
+    <div>
+      <a href="mentions-legales.html">Mentions légales</a>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
