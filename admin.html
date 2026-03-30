@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Administration – MAM Loralouet'</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sage: #ADC2A9; --sage-dark: #8aaa84; --sage-light: #d0dece;
+      --rose: #E6B3B3; --rose-light: #f4d4d4;
+      --beige: #F5F5DC; --beige-dark: #e8e8c4;
+      --text: #3d3830; --text-light: #6b6358; --white: #fffffe;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--beige);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 3rem;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+      text-align: center;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      margin-bottom: 0.25rem;
+    }
+    .logo span { color: var(--sage-dark); font-style: italic; }
+
+    .card-subtitle {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── ÉCRAN LOGIN ── */
+    #login-screen h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      margin-bottom: 0.4rem;
+    }
+    #login-screen p {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      margin-bottom: 1.75rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 0.4rem;
+      text-align: left;
+    }
+
+    input[type="password"] {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      background: var(--beige);
+      border: 1.5px solid var(--beige-dark);
+      border-radius: 12px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 1rem;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      margin-bottom: 1.25rem;
+    }
+    input[type="password"]:focus {
+      border-color: var(--sage);
+      box-shadow: 0 0 0 3px rgba(173,194,169,0.2);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 0.95rem;
+      border: none;
+      border-radius: 50px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.12); }
+    .btn-primary { background: var(--sage-dark); color: var(--white); }
+
+    .error-msg {
+      display: none;
+      background: var(--rose-light);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      font-size: 0.88rem;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    /* ── ÉCRAN ADMIN ── */
+    #admin-screen { display: none; }
+
+    #admin-screen h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      margin-bottom: 0.4rem;
+    }
+    #admin-screen > p {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      margin-bottom: 2rem;
+    }
+
+    .places-display {
+      background: var(--sage-light);
+      border-radius: 18px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .places-display .current-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--sage-dark);
+      margin-bottom: 0.35rem;
+    }
+    .places-display .current-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      color: var(--text);
+      line-height: 1;
+    }
+    .places-display .current-suffix {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-top: 0.25rem;
+    }
+
+    /* Contrôle +/- */
+    .counter-control {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .counter-btn {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      border: 2px solid var(--sage-light);
+      background: var(--white);
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--text);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, border-color 0.2s;
+      flex-shrink: 0;
+    }
+    .counter-btn:hover { background: var(--sage-light); border-color: var(--sage-dark); }
+    .counter-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+    #new-places-display {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--text);
+      min-width: 60px;
+      text-align: center;
+    }
+
+    .success-msg {
+      display: none;
+      background: var(--sage-light);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      font-size: 0.88rem;
+      color: var(--text);
+      margin-top: 1rem;
+    }
+
+    .logout-btn {
+      background: none;
+      border: none;
+      color: var(--text-light);
+      font-size: 0.8rem;
+      cursor: pointer;
+      margin-top: 1.5rem;
+      text-decoration: underline;
+      font-family: 'Nunito', sans-serif;
+    }
+    .logout-btn:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="logo">MAM <span>Loralouet'</span></div>
+    <div class="card-subtitle">Espace administration</div>
+
+    <!-- ÉCRAN LOGIN -->
+    <div id="login-screen">
+      <h2>Connexion</h2>
+      <p>Entrez le mot de passe pour accéder à l'administration.</p>
+      <div class="error-msg" id="error-msg">❌ Mot de passe incorrect.</div>
+      <label for="password">Mot de passe</label>
+      <input type="password" id="password" placeholder="••••••••••••" />
+      <button class="btn btn-primary" onclick="login()">Se connecter</button>
+    </div>
+
+    <!-- ÉCRAN ADMIN -->
+    <div id="admin-screen">
+      <h2>Places disponibles</h2>
+      <p>Modifiez le nombre de places affichées sur le site.</p>
+
+      <div class="places-display">
+        <div class="current-label">Actuellement affiché sur le site</div>
+        <div class="current-value" id="current-places">…</div>
+        <div class="current-suffix">place(s) disponible(s)</div>
+      </div>
+
+      <div class="counter-control">
+        <button class="counter-btn" id="btn-minus" onclick="adjust(-1)">−</button>
+        <div id="new-places-display">…</div>
+        <button class="counter-btn" id="btn-plus" onclick="adjust(1)">+</button>
+      </div>
+
+      <button class="btn btn-primary" id="save-btn" onclick="save()">Enregistrer</button>
+      <div class="success-msg" id="success-msg">✅ Mis à jour ! Le site affiche maintenant <strong id="saved-value"></strong> place(s).</div>
+
+      <br/>
+      <button class="logout-btn" onclick="logout()">Se déconnecter</button>
+    </div>
+  </div>
+
+  <script>
+    let password = '';
+    let newPlaces = 0;
+    const MAX = 8;
+
+    // ── LOGIN ──
+    function login() {
+      password = document.getElementById('password').value;
+      // On vérifie en faisant un POST test
+      fetch('api.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password, places: null }) // places null → va fail sur validation mais pas sur le mdp
+      })
+      .then(r => {
+        if (r.status === 401) {
+          document.getElementById('error-msg').style.display = 'block';
+          password = '';
+          return null;
+        }
+        // Mot de passe accepté (même si la valeur est invalide)
+        showAdmin();
+        return null;
+      })
+      .catch(() => showAdmin()); // En cas d'erreur réseau, on affiche quand même l'admin (le save vérifiera)
+    }
+
+    // Permettre Enter sur le champ mot de passe
+    document.getElementById('password').addEventListener('keydown', e => {
+      if (e.key === 'Enter') login();
+    });
+
+    // ── AFFICHER L'ADMIN ──
+    function showAdmin() {
+      document.getElementById('error-msg').style.display = 'none';
+      document.getElementById('login-screen').style.display = 'none';
+      document.getElementById('admin-screen').style.display = 'block';
+      loadPlaces();
+    }
+
+    // ── CHARGER LES PLACES ──
+    function loadPlaces() {
+      fetch('api.php')
+        .then(r => r.json())
+        .then(data => {
+          newPlaces = data.places;
+          document.getElementById('current-places').textContent = data.places;
+          updateCounter();
+        });
+    }
+
+    // ── AJUSTER LE COMPTEUR ──
+    function adjust(delta) {
+      newPlaces = Math.max(0, Math.min(MAX, newPlaces + delta));
+      updateCounter();
+      document.getElementById('success-msg').style.display = 'none';
+    }
+
+    function updateCounter() {
+      document.getElementById('new-places-display').textContent = newPlaces;
+      document.getElementById('btn-minus').disabled = newPlaces <= 0;
+      document.getElementById('btn-plus').disabled = newPlaces >= MAX;
+    }
+
+    // ── ENREGISTRER ──
+    function save() {
+      const btn = document.getElementById('save-btn');
+      btn.textContent = 'Enregistrement…';
+      btn.disabled = true;
+
+      fetch('api.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password, places: newPlaces })
+      })
+      .then(r => r.json())
+      .then(data => {
+        if (data.success) {
+          document.getElementById('current-places').textContent = newPlaces;
+          document.getElementById('saved-value').textContent = newPlaces;
+          document.getElementById('success-msg').style.display = 'block';
+        } else {
+          alert('Erreur : ' + (data.error || 'inconnue'));
+        }
+        btn.textContent = 'Enregistrer';
+        btn.disabled = false;
+      });
+    }
+
+    // ── LOGOUT ──
+    function logout() {
+      password = '';
+      document.getElementById('password').value = '';
+      document.getElementById('admin-screen').style.display = 'none';
+      document.getElementById('login-screen').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>

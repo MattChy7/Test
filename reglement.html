@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Règlement de fonctionnement – MAM Loralouet' Juvigné (53)</title>
+  <meta name="description" content="Consultez le règlement de fonctionnement de la MAM Loralouet' à Juvigné (Mayenne) : horaires, inscription, repas, sécurité, tarification et plus encore." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sage: #ADC2A9;
+      --sage-dark: #8aaa84;
+      --sage-light: #d0dece;
+      --rose: #E6B3B3;
+      --rose-light: #f4d4d4;
+      --beige: #F5F5DC;
+      --beige-dark: #e8e8c4;
+      --text: #3d3830;
+      --text-light: #6b6358;
+      --white: #fffffe;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      color: var(--text);
+      background: var(--beige);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
+      background: rgba(245,245,220,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--sage-light);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--sage-dark); font-style: italic; }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-light);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--sage-dark); }
+
+    /* ── HERO BANNER ── */
+    .page-hero {
+      padding: 7rem 5rem 3rem;
+      background: var(--white);
+      border-bottom: 1px solid var(--sage-light);
+    }
+
+    .page-hero-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .page-tag {
+      display: inline-block;
+      background: var(--sage-light);
+      color: var(--sage-dark);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 50px;
+      margin-bottom: 1rem;
+    }
+
+    .page-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .page-title em { font-style: italic; color: var(--sage-dark); }
+
+    .page-subtitle {
+      color: var(--text-light);
+      font-size: 1rem;
+      line-height: 1.8;
+      max-width: 600px;
+    }
+
+    /* ── SOMMAIRE ── */
+    .toc-bar {
+      background: var(--sage-dark);
+      padding: 1.5rem 5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1rem;
+    }
+
+    .toc-bar a {
+      color: rgba(255,255,255,0.8);
+      font-size: 0.8rem;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+
+    .toc-bar a:hover { color: var(--white); }
+    .toc-bar a::before { content: '→ '; opacity: 0.5; }
+
+    /* ── MAIN LAYOUT ── */
+    .content-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+
+    /* ── SECTIONS ── */
+    .reg-section {
+      margin-bottom: 3.5rem;
+      scroll-margin-top: 100px;
+    }
+
+    .reg-section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--sage-light);
+    }
+
+    .reg-num {
+      width: 36px;
+      height: 36px;
+      background: var(--sage-dark);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .reg-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      color: var(--text);
+    }
+
+    .reg-section p {
+      color: var(--text-light);
+      line-height: 1.85;
+      margin-bottom: 1rem;
+      font-size: 0.97rem;
+    }
+
+    .reg-section p:last-child { margin-bottom: 0; }
+
+    /* Encadrés info */
+    .info-box {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 1.5rem 1.75rem;
+      margin: 1.25rem 0;
+      border-left: 4px solid var(--rose);
+    }
+
+    .info-box.sage { border-left-color: var(--sage-dark); }
+    .info-box.beige { border-left-color: var(--beige-dark); background: var(--beige); }
+
+    .info-box p { margin-bottom: 0.5rem; }
+
+    /* Liste avec puces custom */
+    .reg-list {
+      list-style: none;
+      margin: 1rem 0;
+    }
+
+    .reg-list li {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      color: var(--text-light);
+      font-size: 0.97rem;
+      line-height: 1.7;
+      margin-bottom: 0.6rem;
+      padding: 0.5rem 0.75rem;
+      background: var(--white);
+      border-radius: 10px;
+    }
+
+    .reg-list li::before {
+      content: '✦';
+      color: var(--rose);
+      font-size: 0.7rem;
+      margin-top: 0.35rem;
+      flex-shrink: 0;
+    }
+
+    /* Grille infos pratiques */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.25rem 0;
+    }
+
+    .info-tile {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+      border-top: 3px solid var(--sage-light);
+    }
+
+    .info-tile strong {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--sage-dark);
+      margin-bottom: 0.4rem;
+    }
+
+    .info-tile span {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* Numéros urgence */
+    .urgence-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+
+    .urgence-item {
+      background: var(--rose-light);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .urgence-item .service { font-size: 0.9rem; color: var(--text); font-weight: 600; }
+    .urgence-item .numero { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--sage-dark); }
+
+    /* ── SIGNATURE ── */
+    .signature-block {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 2.5rem;
+      margin-top: 3rem;
+      text-align: center;
+      border: 2px dashed var(--sage-light);
+    }
+
+    .signature-block h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .signature-block p {
+      color: var(--text-light);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    .sig-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .sig-box {
+      border-top: 2px solid var(--sage-light);
+      padding-top: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+
+    /* ── CONTACT BANDE ── */
+    .contact-band {
+      background: var(--sage-dark);
+      padding: 3.5rem 5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .contact-band-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--white);
+      line-height: 1.3;
+    }
+    .contact-band-text em { font-style: italic; opacity: 0.8; }
+
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      border-radius: 50px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.12); }
+    .btn-light { background: var(--white); color: var(--sage-dark); }
+    .btn-primary { background: var(--sage-dark); color: var(--white); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.6);
+      padding: 2.5rem 5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+    footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+    .footer-logo { font-family: 'Playfair Display', serif; color: var(--white); font-size: 1.1rem; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1rem; }
+      .page-hero { padding: 6rem 1.5rem 2.5rem; }
+      .toc-bar { padding: 1.25rem 1.5rem; }
+      .info-grid { grid-template-columns: 1fr; }
+      .urgence-grid { grid-template-columns: 1fr; }
+      .sig-row { grid-template-columns: 1fr; gap: 2rem; }
+      .contact-band { flex-direction: column; text-align: center; padding: 3rem 2rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem; }
+    }
+
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">MAM <span>Loralouet'</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="index.html#presentation">La MAM</a></li>
+      <li><a href="index.html#lieu">Le lieu</a></li>
+      <li><a href="reglement.html" class="active">Règlement</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <span class="page-tag">Document officiel · Janvier 2026</span>
+      <h1 class="page-title">Règlement de <em>fonctionnement</em></h1>
+      <p class="page-subtitle">
+        Ce document présente les conditions d'accueil et le fonctionnement de la MAM Loralouet'. Il est remis à chaque famille lors de l'inscription et signé conjointement.
+      </p>
+    </div>
+  </div>
+
+  <!-- SOMMAIRE -->
+  <div class="toc-bar">
+    <a href="#presentation">Présentation</a>
+    <a href="#objectifs">Objectifs</a>
+    <a href="#horaires">Horaires</a>
+    <a href="#inscription">Inscription</a>
+    <a href="#adaptation">Adaptation</a>
+    <a href="#accueil">Accueil & départ</a>
+    <a href="#securite">Sécurité</a>
+    <a href="#hygiene">Hygiène</a>
+    <a href="#repas">Repas</a>
+    <a href="#activites">Activités</a>
+    <a href="#tarification">Tarification</a>
+    <a href="#absences">Absences</a>
+    <a href="#sante">Maladie</a>
+    <a href="#delegation">Délégation</a>
+    <a href="#fin">Fin d'accueil</a>
+  </div>
+
+  <!-- CONTENU -->
+  <div class="content-wrap">
+
+    <!-- 1. Présentation -->
+    <div class="reg-section reveal" id="presentation">
+      <div class="reg-section-header">
+        <div class="reg-num">1</div>
+        <h2>Présentation de la MAM</h2>
+      </div>
+      <div class="info-grid">
+        <div class="info-tile">
+          <strong>Adresse</strong>
+          <span>1 Les Grandes Alloteries<br/>53380 Juvigné</span>
+        </div>
+        <div class="info-tile">
+          <strong>Contacts</strong>
+          <span>Betty : 06 20 21 38 91<br/>Élodie : 06 71 36 65 49<br/>mamloralouet@gmail.com</span>
+        </div>
+        <div class="info-tile">
+          <strong>Capacité d'accueil</strong>
+          <span>Jusqu'à 8 enfants simultanément (4 par assistante maternelle)</span>
+        </div>
+        <div class="info-tile">
+          <strong>Gestion</strong>
+          <span>Betty Castel & Élodie Bourcier — décisions prises d'un commun accord</span>
+        </div>
+      </div>
+      <p>La MAM Loralouet' a pour objectif de travailler dans un esprit de bienveillance, de coopération et de respect du rythme de chaque enfant. Nous voulons avant tout que le lieu reste un lieu familial.</p>
+      <p>Les deux assistantes maternelles ont les mêmes responsabilités dans le fonctionnement de la MAM. Elles s'engagent à contracter une assurance responsabilité civile pour les enfants dont elles ont la charge, et à en délivrer une attestation à la demande des parents.</p>
+    </div>
+
+    <!-- 2. Objectifs -->
+    <div class="reg-section reveal" id="objectifs">
+      <div class="reg-section-header">
+        <div class="reg-num">2</div>
+        <h2>Nos objectifs</h2>
+      </div>
+      <ul class="reg-list">
+        <li>Accompagner chaque enfant dans son développement, à son rythme</li>
+        <li>Favoriser l'autonomie, la curiosité et la socialisation</li>
+        <li>Proposer des activités adaptées à l'âge, aux envies et aux besoins des enfants</li>
+        <li>Maintenir une communication ouverte et respectueuse avec les parents</li>
+        <li>S'adapter autant que possible aux demandes des enfants et aux besoins des familles</li>
+      </ul>
+    </div>
+
+    <!-- 3. Horaires -->
+    <div class="reg-section reveal" id="horaires">
+      <div class="reg-section-header">
+        <div class="reg-num">3</div>
+        <h2>Horaires et jours d'ouverture</h2>
+      </div>
+      <div class="info-box sage">
+        <p><strong>Ouvert du lundi au vendredi, de 6h00 à 19h00.</strong></p>
+        <p>Fermé les week-ends et les jours fériés. Les horaires peuvent être adaptés en fonction des besoins des familles.</p>
+      </div>
+      <p>Les dates de congés annuels sont communiquées aux parents lors de la signature du contrat, ou chaque année en septembre, et rappelées un mois à l'avance par voie d'affichage.</p>
+      <div class="info-box">
+        <p><strong>Fermetures annuelles :</strong></p>
+        <p>3 premières semaines d'août + 1 semaine par petites vacances scolaires.</p>
+      </div>
+      <p>Pour la bonne organisation de la MAM, les parents doivent respecter les heures d'arrivée et de départ prévues dans leur planning.</p>
+    </div>
+
+    <!-- 4. Inscription -->
+    <div class="reg-section reveal" id="inscription">
+      <div class="reg-section-header">
+        <div class="reg-num">4</div>
+        <h2>Inscription</h2>
+      </div>
+      <p>L'inscription se déroule en plusieurs étapes : prise de contact, visite des locaux, puis signature d'un engagement réciproque et du contrat d'accueil.</p>
+      <div class="info-box">
+        <p><strong>Engagement réciproque :</strong> si l'une des parties se rétracte, elle doit verser une indemnité correspondant à un demi-mois de salaire brut, conformément à la réglementation.</p>
+      </div>
+      <p>Documents à signer lors de l'inscription :</p>
+      <ul class="reg-list">
+        <li>La fiche sanitaire</li>
+        <li>Le planning des congés</li>
+        <li>La fiche des horaires</li>
+        <li>L'attestation Pajemploi+</li>
+        <li>L'attestation de transport / droit à l'image</li>
+        <li>La délégation d'accueil</li>
+      </ul>
+    </div>
+
+    <!-- 5. Adaptation -->
+    <div class="reg-section reveal" id="adaptation">
+      <div class="reg-section-header">
+        <div class="reg-num">5</div>
+        <h2>Période d'adaptation</h2>
+      </div>
+      <p>L'adaptation se déroule de manière progressive, sur plusieurs jours, pour permettre à l'enfant de s'habituer en douceur à son nouvel environnement.</p>
+      <p>Elle débute par une courte rencontre, puis les temps d'accueil s'allongent progressivement, à un rythme adapté à chaque enfant. Cette approche permet d'observer ses besoins et de créer une relation de confiance avec la famille.</p>
+    </div>
+
+    <!-- 6. Conditions d'accueil -->
+    <div class="reg-section reveal" id="accueil">
+      <div class="reg-section-header">
+        <div class="reg-num">6</div>
+        <h2>Conditions d'accueil et de départ</h2>
+      </div>
+      <p>Les arrivées et départs se font dans le calme, en respectant les horaires prévus au contrat. Les transmissions entre parents et assistantes maternelles sont importantes pour assurer un suivi de qualité (repas, sommeil, santé, humeur…).</p>
+      <div class="info-box">
+        <p>Les parents prêtent attention à ne pas rester plus de <strong>10 minutes</strong> lors du dépôt ou de la récupération. Les heures prévues au contrat incluent les transmissions.</p>
+        <p>Exemple : un enfant prévu de 8h à 18h doit arriver à 8h et être parti à 18h — c'est l'heure de départ de l'enfant qui compte, pas celle d'arrivée des parents.</p>
+      </div>
+      <p>En cas d'absence ou de retard, merci de prévenir la MAM dès que possible. Les retards répétés ou trop importants seront facturés.</p>
+      <p>Un carnet de transmission est fourni aux parents pour assurer la continuité de la vie de l'enfant.</p>
+    </div>
+
+    <!-- 7. Sécurité -->
+    <div class="reg-section reveal" id="securite">
+      <div class="reg-section-header">
+        <div class="reg-num">7</div>
+        <h2>Sécurité</h2>
+      </div>
+      <p>Tous les locaux, jouets et équipements sont régulièrement vérifiés et entretenus pour garantir la sécurité des enfants.</p>
+      <ul class="reg-list">
+        <li>Le port de bijoux (chaînes, colliers…) est strictement interdit en raison des risques d'étranglement, d'absorption ou de blessure</li>
+        <li>Il est interdit aux enfants d'apporter des objets dangereux ou des jeux personnels — la MAM ne pourra être tenue responsable en cas de perte</li>
+        <li>Seuls les enfants accueillis à la MAM sont sous la responsabilité des assistantes maternelles</li>
+        <li>Les frères, sœurs ou autres enfants accompagnant un parent restent sous la responsabilité exclusive de cet adulte, et sont invités à rester dans le sas d'entrée</li>
+      </ul>
+    </div>
+
+    <!-- 8. Hygiène -->
+    <div class="reg-section reveal" id="hygiene">
+      <div class="reg-section-header">
+        <div class="reg-num">8</div>
+        <h2>Hygiène</h2>
+      </div>
+      <p>Chaque enfant doit arriver à la MAM propre, lavé et changé le matin.</p>
+      <p>Affaires à prévoir et pouvant rester à la MAM :</p>
+      <ul class="reg-list">
+        <li>2 tenues de rechange de saison (marquées du nom de l'enfant)</li>
+        <li>Un doudou, une tétine si besoin</li>
+        <li>1 paquet de couches</li>
+        <li>1 paquet de coton</li>
+      </ul>
+    </div>
+
+    <!-- 9. Repas -->
+    <div class="reg-section reveal" id="repas">
+      <div class="reg-section-header">
+        <div class="reg-num">9</div>
+        <h2>Repas</h2>
+      </div>
+      <div class="info-box sage">
+        <p><strong>Le biberon du matin et le petit déjeuner sont donnés à la maison, avant l'arrivée à la MAM.</strong></p>
+      </div>
+      <p><strong>Pour les bébés :</strong> les parents fournissent au démarrage un biberon, une boîte de lait infantile et un pack d'eau, à renouveler dès épuisement. Le lait maternel doit arriver daté dans un sac isotherme noté du prénom de l'enfant.</p>
+      <div class="info-box">
+        <p><strong>Jusqu'à la fin de la diversification alimentaire (15–18 mois) :</strong> les parents fournissent les repas et goûters dans un sac isotherme, chaque boîte marquée au prénom de l'enfant.</p>
+        <p><strong>Après la diversification :</strong> les repas et goûters sont entièrement préparés et fournis par la MAM.</p>
+      </div>
+      <p>L'eau est proposée régulièrement tout au long de la journée. L'alimentation respecte les besoins nutritionnels et les habitudes de chaque enfant.</p>
+    </div>
+
+    <!-- 10. Activités -->
+    <div class="reg-section reveal" id="activites">
+      <div class="reg-section-header">
+        <div class="reg-num">10</div>
+        <h2>Activités et sorties</h2>
+      </div>
+      <p>Les enfants participent à des activités variées et adaptées à leur âge : jeux libres, peinture, comptines, histoires, motricité, balades extérieures, activités d'éveil…</p>
+      <p>La MAM participe régulièrement à des sorties à la bibliothèque et au Relais Petite Enfance (RPE), favorisant la curiosité, la créativité et la socialisation des enfants. Le jardin est utilisé autant que possible.</p>
+      <div class="info-box">
+        <p>Une autorisation parentale est demandée pour les sorties et les prises de photo dans le cadre du temps d'accueil.</p>
+      </div>
+    </div>
+
+    <!-- 11. Tarification -->
+    <div class="reg-section reveal" id="tarification">
+      <div class="reg-section-header">
+        <div class="reg-num">11</div>
+        <h2>Tarification</h2>
+      </div>
+      <p>Chaque assistante maternelle est rémunérée directement par les parents employeurs, conformément au contrat individuel signé entre eux.</p>
+      <p>Une fiche mensuelle détaillant les heures de garde ainsi que les indemnités d'entretien et de repas est remise aux parents pour la déclaration sur Pajemploi.</p>
+      <div class="info-box">
+        <p><strong>Versement du salaire :</strong> le 1er du mois via Pajemploi+. En cas de non-paiement avant le 15, la garde pourra être suspendue jusqu'à régularisation.</p>
+        <p><strong>Indemnités :</strong> versées mensuellement à chaque fin de mois.</p>
+      </div>
+    </div>
+
+    <!-- 12. Absences -->
+    <div class="reg-section reveal" id="absences">
+      <div class="reg-section-header">
+        <div class="reg-num">12</div>
+        <h2>Absences</h2>
+      </div>
+      <p>Les absences non prévues au contrat (convenances personnelles, intempéries…) restent rémunérées et ne sont pas déduites du salaire. Les heures prévues au contrat sont facturées sauf en cas d'accident ou maladie.</p>
+      <div class="info-box">
+        <p>En cas de maladie, un certificat médical doit être fourni dans les <strong>48 heures</strong>.</p>
+        <p>Exonérations possibles : <strong>14 jours consécutifs</strong> en cas d'hospitalisation, <strong>10 jours annuels</strong> en cas de maladie (avec certificat).</p>
+      </div>
+      <p>En cas d'absence de l'assistante maternelle, les parents sont prévenus le plus tôt possible afin de s'organiser.</p>
+    </div>
+
+    <!-- 13. Maladie / Accident -->
+    <div class="reg-section reveal" id="sante">
+      <div class="reg-section-header">
+        <div class="reg-num">13</div>
+        <h2>Traitement, maladie, accident</h2>
+      </div>
+      <p>Si la maladie survient pendant la garde, un parent est prévenu et invité à venir chercher son enfant. Au moins un des deux parents doit être joignable pendant le temps de présence de l'enfant.</p>
+      <p>Un enfant atteint d'une maladie contagieuse, de forte fièvre ou nécessitant une présence quasi constante d'un adulte ne pourra pas être admis à la MAM.</p>
+      <div class="info-box beige">
+        <p><strong>L'assistante maternelle ne peut en aucun cas administrer un médicament sous ordonnance.</strong></p>
+      </div>
+      <p>En cas d'accident, l'assistante maternelle alerte les secours puis les parents. La MAM dispose d'une armoire à pharmacie vérifiée et renouvelée chaque mois.</p>
+      <div class="urgence-grid">
+        <div class="urgence-item"><span class="service">⛑️ Pompiers</span><span class="numero">18 / 112</span></div>
+        <div class="urgence-item"><span class="service">🚑 SAMU</span><span class="numero">15</span></div>
+        <div class="urgence-item"><span class="service">🚓 Police</span><span class="numero">17</span></div>
+        <div class="urgence-item"><span class="service">☠️ Centre Antipoison</span><span class="numero">02 41 48 21 21</span></div>
+      </div>
+    </div>
+
+    <!-- 14. Délégation -->
+    <div class="reg-section reveal" id="delegation">
+      <div class="reg-section-header">
+        <div class="reg-num">14</div>
+        <h2>Délégation d'accueil</h2>
+      </div>
+      <p>Les parents signent une délégation d'accueil autorisant l'assistante maternelle référente à confier ponctuellement l'enfant à l'autre assistante de la MAM. Cette délégation, bien que non obligatoire, est essentielle au bon fonctionnement de la structure.</p>
+      <p>Elle ne donne lieu à aucune rémunération et ne peut en aucun cas conduire une assistante maternelle à dépasser le nombre d'enfants fixé par son agrément. En cas de remplacement prolongé, un CDD est établi entre les parents et l'assistante remplaçante.</p>
+    </div>
+
+    <!-- 15. Fin d'accueil -->
+    <div class="reg-section reveal" id="fin">
+      <div class="reg-section-header">
+        <div class="reg-num">15</div>
+        <h2>Fin d'accueil</h2>
+      </div>
+      <p>En cas de fin d'accueil (déménagement, entrée à l'école, changement de mode de garde…), un préavis doit être respecté selon les modalités du contrat signé.</p>
+      <p>Au départ définitif de l'enfant, les parents fournissent à l'assistante maternelle référente :</p>
+      <ul class="reg-list">
+        <li>Une attestation Pôle Emploi</li>
+        <li>Un solde de tout compte</li>
+        <li>Un certificat de travail</li>
+      </ul>
+      <p>Ces documents sont remis avec le dernier bulletin de salaire.</p>
+    </div>
+
+    <!-- 16. Signature -->
+    <div class="signature-block reveal">
+      <h3>Engagement et signature</h3>
+      <p>La signature de ce règlement vaut acceptation complète des conditions de fonctionnement de la MAM Loralouet'. Il est signé par les parents et les deux assistantes maternelles lors de la remise du contrat.</p>
+      <div class="sig-row">
+        <div class="sig-box">Nom et signature des parents<br/><em style="font-size:0.8rem;opacity:0.6">(précédé de « lu et approuvé »)</em></div>
+        <div class="sig-box">Signature Betty Castel<br/><em style="font-size:0.8rem;opacity:0.6">(précédé de « lu et approuvé »)</em></div>
+        <div class="sig-box">Signature Élodie Bourcier<br/><em style="font-size:0.8rem;opacity:0.6">(précédé de « lu et approuvé »)</em></div>
+      </div>
+    </div>
+
+  </div><!-- /content-wrap -->
+
+  <!-- BANDE CONTACT -->
+  <div class="contact-band">
+    <div class="contact-band-text">
+      Une question sur le règlement ?<br/>
+      <em>Contactez-nous !</em>
+    </div>
+    <a href="contact.html" class="btn btn-light">Nous écrire →</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">MAM Loralouet'</div>
+    <div>1 Les Grandes Alloteries · 53380 Juvigné · Mayenne</div>
+    <div><a href="mentions-legales.html">Mentions légales</a></div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

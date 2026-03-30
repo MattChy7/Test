@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MAM Loralouet' – Maison d'Assistantes Maternelles à Bourgneuf-la-Forêt</title>
-  <meta name="description" content="Betty et Élodie vous accueillent dans leur MAM Loralouet' à Bourgneuf-la-Forêt. Agrément depuis 2014, jusqu'à 8 enfants dans un cadre chaleureux et familial en campagne mayennaise." />
-  <meta name="keywords" content="assistante maternelle, Bourgneuf-la-Forêt, MAM, Loralouet, garde enfant, crèche familiale, Saint-Hilaire-du-Maine, Mayenne" />
+  <title>MAM Loralouet' – Maison d'Assistantes Maternelles à Juvigné (53)</title>
+  <meta name="description" content="Betty et Élodie accueillent votre enfant dès 1 mois à la MAM Loralouet' à Juvigné (Mayenne). Jusqu'à 8 enfants dans un cadre chaleureux et familial en campagne mayennaise." />
+  <meta name="keywords" content="assistante maternelle, Juvigné, MAM, Loralouet, garde enfant, crèche familiale, Mayenne, 53380, nourrisson, bébé" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet" />
   <style>
@@ -549,12 +549,12 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-left">
-      <span class="hero-tag">Agrément depuis 2014 · Mayenne (53)</span>
+      <span class="hero-tag">MAM agréée · Juvigné, Mayenne (53)</span>
       <h1 class="hero-title">
         Un nid douillet<br/>pour les <em>tout-petits</em>
       </h1>
       <p class="hero-subtitle">
-        Betty et Élodie vous accueillent dans leur Maison d'Assistantes Maternelles, en pleine campagne mayennaise, dans un cadre chaleureux et familial.
+        Betty et Élodie vous accueillent dans leur Maison d'Assistantes Maternelles, en pleine campagne mayennaise à Juvigné, dans un cadre chaleureux et familial.
       </p>
       <div class="hero-ctas">
         <a href="contact.html" class="btn btn-primary">Prendre contact</a>
@@ -608,16 +608,16 @@
   <!-- STATS -->
   <div class="stats">
     <div class="stat-item">
-      <span class="stat-number">2014</span>
-      <span class="stat-label">Année d'agrément</span>
+      <span class="stat-number">1 mois</span>
+      <span class="stat-label">Dès 1 mois jusqu'à 3/6 ans</span>
     </div>
     <div class="stat-item">
       <span class="stat-number">8</span>
       <span class="stat-label">Enfants accueillis simultanément</span>
     </div>
     <div class="stat-item">
-      <span class="stat-number">5</span>
-      <span class="stat-label">Places disponibles actuellement</span>
+      <span class="stat-number">6h–19h</span>
+      <span class="stat-label">Du lundi au vendredi</span>
     </div>
   </div>
 
@@ -679,7 +679,7 @@
         <div class="lieu-icon">📍</div>
         <div>
           <h3>Localisation</h3>
-          <p>Axe Bourgneuf-la-Forêt — à 5 km de Saint-Hilaire-du-Maine et 5 km de Bourgneuf-la-Forêt, en Mayenne (53).</p>
+          <p>1 Les Grandes Alloteries, 53380 Juvigné — en Mayenne. Axe Laval / Fougères, facilement accessible depuis les communes alentour.</p>
         </div>
       </div>
       <div class="lieu-card">
@@ -698,7 +698,7 @@
     <h2 class="section-title">Une journée <em>rythmée et bienveillante</em></h2>
     <div class="timeline reveal">
       <div class="timeline-item">
-        <div class="timeline-time">7h – 9h</div>
+        <div class="timeline-time">6h – 9h</div>
         <div class="timeline-dot"></div>
         <div class="timeline-content">Accueil des enfants — temps de jeux libres pour bien commencer la journée</div>
       </div>
@@ -729,7 +729,7 @@
       </div>
     </div>
     <p style="margin-top: 2rem; color: var(--text-light); font-size: 0.9rem;">
-      ⏰ Horaires : 7h à 18h selon les besoins. Adaptable à la demande.
+      ⏰ Ouvert du lundi au vendredi de 6h à 19h. Horaires adaptés selon les besoins des familles.
     </p>
   </section>
 
@@ -738,7 +738,7 @@
     <p class="section-tag">Disponibilités</p>
     <h2 class="section-title">Des places encore disponibles</h2>
     <div class="places-badge reveal">
-      <span class="places-number">5</span>
+      <span class="places-number" id="places-number">…</span>
       <span class="places-label">places disponibles actuellement</span>
     </div>
     <p class="places-note">N'hésitez pas à nous contacter pour organiser une visite et discuter de vos besoins.</p>
@@ -758,7 +758,7 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-logo">MAM Loralouet'</div>
-    <div>Bourgneuf-la-Forêt · Mayenne (53)</div>
+    <div>Juvigné · 53380 · Mayenne</div>
     <div>
       <a href="mentions-legales.html">Mentions légales</a>
     </div>
@@ -782,6 +782,25 @@
       });
     }, { threshold: 0.15 });
     reveals.forEach(el => observer.observe(el));
+
+    // ── Places dynamiques ──
+    fetch('api.php')
+      .then(r => r.json())
+      .then(data => {
+        const n = data.places;
+        const el = document.getElementById('places-number');
+        if (el) el.textContent = n;
+        const titre = document.querySelector('.places-section .section-title');
+        if (titre) {
+          titre.innerHTML = n > 0
+            ? n + ' place' + (n > 1 ? 's' : '') + ' encore disponible' + (n > 1 ? 's' : '')
+            : 'Complet pour le moment';
+        }
+      })
+      .catch(() => {
+        const el = document.getElementById('places-number');
+        if (el) el.textContent = '–';
+      });
   </script>
 </body>
 </html>

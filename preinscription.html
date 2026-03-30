@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pré-inscription – MAM Loralouet' Juvigné (53)</title>
+  <meta name="description" content="Déposez une demande de pré-inscription pour votre enfant à la MAM Loralouet' à Juvigné en Mayenne. Places limitées." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sage: #ADC2A9; --sage-dark: #8aaa84; --sage-light: #d0dece;
+      --rose: #E6B3B3; --rose-light: #f4d4d4;
+      --beige: #F5F5DC; --beige-dark: #e8e8c4;
+      --text: #3d3830; --text-light: #6b6358; --white: #fffffe;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Nunito', sans-serif; color: var(--text); background: var(--beige); overflow-x: hidden; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 3rem;
+      background: rgba(245,245,220,0.95); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--sage-light);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+    }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--text); text-decoration: none; }
+    .nav-logo span { color: var(--sage-dark); font-style: italic; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.9rem; font-weight: 600; color: var(--text-light); text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--sage-dark); }
+
+    /* HERO */
+    .page-hero { padding: 7rem 5rem 3.5rem; background: var(--white); border-bottom: 1px solid var(--sage-light); }
+    .page-hero-inner { max-width: 760px; margin: 0 auto; }
+    .page-tag { display: inline-block; background: var(--sage-light); color: var(--sage-dark); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 1rem; border-radius: 50px; margin-bottom: 1rem; }
+    .page-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.2; margin-bottom: 1rem; }
+    .page-title em { font-style: italic; color: var(--sage-dark); }
+    .page-subtitle { color: var(--text-light); font-size: 1rem; line-height: 1.8; }
+
+    /* FORM WRAPPER */
+    .form-wrapper { max-width: 760px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+
+    /* BLOCS */
+    .form-block {
+      background: var(--white);
+      border-radius: 22px;
+      padding: 2.25rem 2.5rem;
+      margin-bottom: 1.75rem;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+    }
+
+    .block-title {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      margin-bottom: 1.75rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--sage-light);
+    }
+
+    .block-num {
+      width: 32px; height: 32px;
+      background: var(--rose-light);
+      color: var(--text);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 0.9rem; font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .block-num.sage { background: var(--sage-light); }
+    .block-num.beige { background: var(--beige-dark); }
+
+    .block-title h2 { font-family: 'Playfair Display', serif; font-size: 1.2rem; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .form-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .form-group { margin-bottom: 1rem; }
+    .form-group:last-child { margin-bottom: 0; }
+
+    label { display: block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-light); margin-bottom: 0.4rem; }
+
+    input, textarea, select {
+      width: 100%; padding: 0.75rem 1rem;
+      background: var(--beige); border: 1.5px solid var(--beige-dark);
+      border-radius: 10px;
+      font-family: 'Nunito', sans-serif; font-size: 0.95rem; color: var(--text);
+      transition: border-color 0.2s, box-shadow 0.2s; outline: none;
+    }
+    input:focus, textarea:focus, select:focus { border-color: var(--sage); box-shadow: 0 0 0 3px rgba(173,194,169,0.2); }
+    textarea { resize: vertical; min-height: 90px; }
+
+    /* Tableau calendrier */
+    .calendar-table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
+    .calendar-table th {
+      background: var(--sage-light);
+      color: var(--text);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.75rem 1rem;
+      text-align: left;
+    }
+    .calendar-table th:first-child { border-radius: 10px 0 0 0; }
+    .calendar-table th:last-child { border-radius: 0 10px 0 0; }
+    .calendar-table td { padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--beige-dark); }
+    .calendar-table tr:last-child td { border-bottom: none; }
+    .calendar-table .jour-label { font-weight: 600; font-size: 0.9rem; color: var(--text); padding-left: 1rem; }
+    .calendar-table input { padding: 0.55rem 0.75rem; font-size: 0.9rem; }
+    .calendar-table tr:nth-child(even) td { background: var(--beige); }
+
+    /* Remarques */
+    .form-group.full { margin-top: 1.25rem; }
+
+    /* Bouton */
+    .submit-area { text-align: center; margin-top: 0.5rem; }
+    .btn-submit {
+      display: inline-block;
+      padding: 1.1rem 3.5rem;
+      background: var(--sage-dark);
+      color: var(--white);
+      border: none; border-radius: 50px;
+      font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-submit:hover { background: #7a9a74; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(138,170,132,0.35); }
+    .form-note { font-size: 0.82rem; color: var(--text-light); margin-top: 1rem; opacity: 0.7; }
+
+    .success-block {
+      display: none;
+      background: var(--sage-light);
+      border-radius: 18px;
+      padding: 2.5rem;
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+    .success-block h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 0.75rem; }
+    .success-block p { color: var(--text-light); line-height: 1.7; }
+
+    /* Footer */
+    footer { background: var(--text); color: rgba(255,255,255,0.6); padding: 2.5rem 5rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; }
+    footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+    .footer-logo { font-family: 'Playfair Display', serif; color: var(--white); font-size: 1.1rem; }
+
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1rem; }
+      .page-hero { padding: 6rem 1.5rem 2.5rem; }
+      .form-wrapper { padding: 2.5rem 1.25rem 4rem; }
+      .form-block { padding: 1.75rem 1.5rem; }
+      .form-row, .form-row-3 { grid-template-columns: 1fr; }
+      .calendar-table th, .calendar-table td { padding: 0.5rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">MAM <span>Loralouet'</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="index.html#presentation">La MAM</a></li>
+      <li><a href="index.html#lieu">Le lieu</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <span class="page-tag">Places disponibles</span>
+      <h1 class="page-title">Formulaire de <em>pré-inscription</em></h1>
+      <p class="page-subtitle">Remplissez ce formulaire pour soumettre votre demande. Betty et Élodie vous recontacteront rapidement pour confirmer et organiser une visite.</p>
+    </div>
+  </div>
+
+  <div class="form-wrapper">
+    <form id="preinscription-form" action="https://formspree.io/f/VOTRE_ID_FORMSPREE" method="POST">
+
+      <!-- BLOC 1 : Enfant -->
+      <div class="form-block reveal">
+        <div class="block-title">
+          <div class="block-num">1</div>
+          <h2>Informations sur l'enfant</h2>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="enfant-nom">Nom</label>
+            <input type="text" id="enfant-nom" name="enfant_nom" required />
+          </div>
+          <div class="form-group">
+            <label for="enfant-prenom">Prénom</label>
+            <input type="text" id="enfant-prenom" name="enfant_prenom" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="enfant-ddn">Date de naissance / Naissance prévue</label>
+            <input type="date" id="enfant-ddn" name="enfant_ddn" />
+          </div>
+          <div class="form-group">
+            <label for="date-entree">Date d'entrée souhaitée</label>
+            <input type="date" id="date-entree" name="date_entree" />
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOC 2 : Maman -->
+      <div class="form-block reveal">
+        <div class="block-title">
+          <div class="block-num sage">2</div>
+          <h2>Renseignements sur la maman</h2>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="maman-nom">Nom</label>
+            <input type="text" id="maman-nom" name="maman_nom" />
+          </div>
+          <div class="form-group">
+            <label for="maman-prenom">Prénom</label>
+            <input type="text" id="maman-prenom" name="maman_prenom" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="maman-adresse">Adresse</label>
+          <input type="text" id="maman-adresse" name="maman_adresse" placeholder="Numéro, rue, code postal, ville" />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="maman-tel">Téléphone</label>
+            <input type="tel" id="maman-tel" name="maman_tel" placeholder="06 00 00 00 00" />
+          </div>
+          <div class="form-group">
+            <label for="maman-email">E-mail</label>
+            <input type="email" id="maman-email" name="maman_email" placeholder="adresse@email.fr" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="maman-profession">Profession</label>
+            <input type="text" id="maman-profession" name="maman_profession" />
+          </div>
+          <div class="form-group">
+            <label for="maman-situation">Situation familiale</label>
+            <input type="text" id="maman-situation" name="maman_situation" placeholder="Ex : mariée, célibataire…" />
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOC 3 : Papa -->
+      <div class="form-block reveal">
+        <div class="block-title">
+          <div class="block-num">3</div>
+          <h2>Renseignements sur le papa</h2>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="papa-nom">Nom</label>
+            <input type="text" id="papa-nom" name="papa_nom" />
+          </div>
+          <div class="form-group">
+            <label for="papa-prenom">Prénom</label>
+            <input type="text" id="papa-prenom" name="papa_prenom" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="papa-adresse">Adresse</label>
+          <input type="text" id="papa-adresse" name="papa_adresse" placeholder="Numéro, rue, code postal, ville" />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="papa-tel">Téléphone</label>
+            <input type="tel" id="papa-tel" name="papa_tel" placeholder="06 00 00 00 00" />
+          </div>
+          <div class="form-group">
+            <label for="papa-email">E-mail</label>
+            <input type="email" id="papa-email" name="papa_email" placeholder="adresse@email.fr" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="papa-profession">Profession</label>
+            <input type="text" id="papa-profession" name="papa_profession" />
+          </div>
+          <div class="form-group">
+            <label for="papa-situation">Situation familiale</label>
+            <input type="text" id="papa-situation" name="papa_situation" placeholder="Ex : marié, séparé…" />
+          </div>
+        </div>
+      </div>
+
+      <!-- BLOC 4 : Calendrier -->
+      <div class="form-block reveal">
+        <div class="block-title">
+          <div class="block-num beige">4</div>
+          <h2>Calendrier d'accueil souhaité</h2>
+        </div>
+        <table class="calendar-table">
+          <thead>
+            <tr>
+              <th>Jour</th>
+              <th>Heure d'arrivée</th>
+              <th>Heure de départ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="jour-label">Lundi</td>
+              <td><input type="time" name="lundi_arrivee" /></td>
+              <td><input type="time" name="lundi_depart" /></td>
+            </tr>
+            <tr>
+              <td class="jour-label">Mardi</td>
+              <td><input type="time" name="mardi_arrivee" /></td>
+              <td><input type="time" name="mardi_depart" /></td>
+            </tr>
+            <tr>
+              <td class="jour-label">Mercredi</td>
+              <td><input type="time" name="mercredi_arrivee" /></td>
+              <td><input type="time" name="mercredi_depart" /></td>
+            </tr>
+            <tr>
+              <td class="jour-label">Jeudi</td>
+              <td><input type="time" name="jeudi_arrivee" /></td>
+              <td><input type="time" name="jeudi_depart" /></td>
+            </tr>
+            <tr>
+              <td class="jour-label">Vendredi</td>
+              <td><input type="time" name="vendredi_arrivee" /></td>
+              <td><input type="time" name="vendredi_depart" /></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="form-group full">
+          <label for="remarques">Remarques éventuelles</label>
+          <textarea id="remarques" name="remarques" placeholder="Informations complémentaires, besoins particuliers…"></textarea>
+        </div>
+      </div>
+
+      <!-- ENVOI -->
+      <div class="submit-area reveal">
+        <button type="submit" class="btn-submit">Envoyer ma pré-inscription</button>
+        <p class="form-note">Cette pré-inscription ne constitue pas un engagement définitif. Betty et Élodie vous recontacteront pour confirmer la disponibilité et organiser une visite.</p>
+      </div>
+
+      <div class="success-block" id="success-block">
+        <h3>🌿 Pré-inscription reçue !</h3>
+        <p>Betty et Élodie ont bien reçu votre demande et vous recontacteront très prochainement pour la suite.</p>
+      </div>
+
+    </form>
+  </div>
+
+  <footer>
+    <div class="footer-logo">MAM Loralouet'</div>
+    <div>1 Les Grandes Alloteries · 53380 Juvigné · Mayenne</div>
+    <div><a href="mentions-legales.html">Mentions légales</a></div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+
+    document.getElementById('preinscription-form').addEventListener('submit', () => {
+      setTimeout(() => {
+        document.getElementById('success-block').style.display = 'block';
+        document.getElementById('preinscription-form').reset();
+        window.scrollTo({ top: document.getElementById('success-block').offsetTop - 100, behavior: 'smooth' });
+      }, 500);
+    });
+  </script>
+
+</body>
+</html>
