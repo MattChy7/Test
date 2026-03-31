@@ -1,6 +1,6 @@
 <?php
 // ── CONFIG ──────────────────────────────────────────
-define('ADMIN_PASSWORD', 'loralouet2026'); // ← change ce mot de passe !
+define('ADMIN_PASSWORD', 'admin'); // ← change ce mot de passe !
 define('PLACES_FILE', __DIR__ . '/places.json');
 // ────────────────────────────────────────────────────
 
