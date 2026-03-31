@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact – MAM Loralouet' à Juvigné (Mayenne)</title>
+  <meta name="description" content="Contactez Betty et Élodie de la MAM Loralouet' à Juvigné (53). Places disponibles, visite, renseignements — écrivez-nous ou appelez-nous." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sage: #ADC2A9;
+      --sage-dark: #8aaa84;
+      --sage-light: #d0dece;
+      --rose: #E6B3B3;
+      --rose-light: #f4d4d4;
+      --beige: #F5F5DC;
+      --beige-dark: #e8e8c4;
+      --text: #3d3830;
+      --text-light: #6b6358;
+      --white: #fffffe;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      color: var(--text);
+      background: var(--beige);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 3rem;
+      background: rgba(245,245,220,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--sage-light);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--sage-dark); font-style: italic; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.9rem; font-weight: 600; color: var(--text-light);
+      text-decoration: none; letter-spacing: 0.05em; text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--sage-dark); }
+
+    /* ── HERO ── */
+    .page-hero {
+      padding: 7rem 5rem 3.5rem;
+      background: var(--white);
+      border-bottom: 1px solid var(--sage-light);
+    }
+    .page-hero-inner { max-width: 860px; margin: 0 auto; }
+    .page-tag {
+      display: inline-block;
+      background: var(--rose-light);
+      color: var(--text-light);
+      font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.35rem 1rem; border-radius: 50px;
+      margin-bottom: 1rem;
+    }
+    .page-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.2; margin-bottom: 1rem;
+    }
+    .page-title em { font-style: italic; color: var(--sage-dark); }
+    .page-subtitle {
+      color: var(--text-light);
+      font-size: 1rem; line-height: 1.8; max-width: 560px;
+    }
+
+    /* ── LAYOUT ── */
+    .contact-layout {
+      max-width: 1100px; margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    /* ── COLONNE GAUCHE ── */
+    .contact-infos { display: flex; flex-direction: column; gap: 1.25rem; }
+
+    .info-card {
+      background: var(--white); border-radius: 18px;
+      padding: 1.5rem 1.75rem;
+      display: flex; gap: 1.1rem; align-items: flex-start;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+    }
+    .info-icon {
+      width: 44px; height: 44px;
+      background: var(--sage-light); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0;
+    }
+    .info-card h3 {
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.09em; text-transform: uppercase;
+      color: var(--sage-dark); margin-bottom: 0.35rem;
+    }
+    .info-card p, .info-card a {
+      font-size: 0.97rem; color: var(--text-light);
+      line-height: 1.7; text-decoration: none; display: block;
+    }
+    .info-card a:hover { color: var(--sage-dark); }
+
+    /* Carte */
+    .map-card {
+      background: var(--white); border-radius: 18px;
+      overflow: hidden; box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+    }
+    .map-card iframe { width: 100%; height: 210px; border: none; display: block; }
+    .map-card-footer {
+      padding: 1rem 1.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .map-card-footer span { font-size: 0.85rem; color: var(--text-light); }
+    .map-link {
+      font-size: 0.82rem; font-weight: 700;
+      color: var(--sage-dark); text-decoration: none;
+    }
+    .map-link:hover { text-decoration: underline; }
+
+    /* Documents discrets */
+    .docs-block {
+      background: var(--beige); border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+      border: 1px solid var(--beige-dark);
+    }
+    .docs-block h4 {
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--text-light); margin-bottom: 0.75rem; opacity: 0.65;
+    }
+    .doc-link {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-size: 0.87rem; color: var(--text-light);
+      text-decoration: none; padding: 0.5rem 0;
+      border-bottom: 1px solid var(--beige-dark);
+      transition: color 0.2s; opacity: 0.8;
+    }
+    .doc-link:last-child { border-bottom: none; }
+    .doc-link:hover { color: var(--text); opacity: 1; }
+    .doc-link::before { content: '↓'; font-size: 0.75rem; opacity: 0.4; }
+
+    /* ── COLONNE DROITE ── */
+    .right-col { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .form-card {
+      background: var(--white); border-radius: 22px;
+      padding: 2.5rem; box-shadow: 0 4px 30px rgba(0,0,0,0.06);
+    }
+    .form-card h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; margin-bottom: 0.4rem;
+    }
+    .form-card h2 em { font-style: italic; color: var(--sage-dark); }
+    .form-card > p {
+      font-size: 0.9rem; color: var(--text-light);
+      margin-bottom: 1.75rem; line-height: 1.6;
+    }
+
+    .form-group { margin-bottom: 1.25rem; }
+    .form-row {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1rem; margin-bottom: 1.25rem;
+    }
+
+    label {
+      display: block; font-size: 0.8rem; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--text-light); margin-bottom: 0.45rem;
+    }
+    input, textarea, select {
+      width: 100%; padding: 0.8rem 1rem;
+      background: var(--beige); border: 1.5px solid var(--beige-dark);
+      border-radius: 10px; font-family: 'Nunito', sans-serif;
+      font-size: 0.95rem; color: var(--text);
+      transition: border-color 0.2s, box-shadow 0.2s; outline: none;
+    }
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--sage);
+      box-shadow: 0 0 0 3px rgba(173,194,169,0.2);
+    }
+    textarea { resize: vertical; min-height: 110px; }
+
+    .btn-submit {
+      width: 100%; padding: 1rem;
+      background: var(--sage-dark); color: var(--white);
+      border: none; border-radius: 50px;
+      font-family: 'Nunito', sans-serif; font-size: 1rem; font-weight: 700;
+      cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; margin-top: 0.5rem;
+    }
+    .btn-submit:hover {
+      background: #7a9a74;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(138,170,132,0.35);
+    }
+    .form-note {
+      text-align: center; font-size: 0.8rem;
+      color: var(--text-light); margin-top: 1rem; opacity: 0.7;
+    }
+    .success-msg {
+      display: none; background: var(--sage-light);
+      border-radius: 12px; padding: 1.25rem;
+      text-align: center; font-size: 0.95rem; margin-top: 1rem;
+    }
+
+    /* CTA pré-inscription */
+    .preinscription-cta {
+      background: var(--sage-dark); border-radius: 22px;
+      padding: 2rem 2.5rem;
+      display: flex; justify-content: space-between;
+      align-items: center; gap: 1.5rem;
+    }
+    .preinscription-cta-text .cta-label {
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.6); display: block; margin-bottom: 0.4rem;
+    }
+    .preinscription-cta-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem; color: var(--white); margin-bottom: 0.4rem;
+    }
+    .preinscription-cta-text h3 em { font-style: italic; }
+    .preinscription-cta-text p {
+      font-size: 0.85rem; color: rgba(255,255,255,0.7); line-height: 1.5;
+    }
+    .btn-preinscription {
+      display: inline-block; background: var(--white);
+      color: var(--sage-dark); font-family: 'Nunito', sans-serif;
+      font-weight: 700; font-size: 0.9rem;
+      padding: 0.85rem 1.5rem; border-radius: 50px;
+      text-decoration: none; white-space: nowrap;
+      transition: transform 0.2s, box-shadow 0.2s; flex-shrink: 0;
+    }
+    .btn-preinscription:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text); color: rgba(255,255,255,0.6);
+      padding: 2.5rem 5rem;
+      display: flex; justify-content: space-between;
+      align-items: center; font-size: 0.85rem;
+    }
+    footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
+    footer a:hover { color: var(--white); }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      color: var(--white); font-size: 1.1rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1rem; }
+      .page-hero { padding: 6rem 1.5rem 2.5rem; }
+      .contact-layout { grid-template-columns: 1fr; padding: 3rem 1.5rem 4rem; gap: 2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .preinscription-cta { flex-direction: column; text-align: center; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem; }
+    }
+
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">MAM <span>Loralouet'</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="index.html#presentation">La MAM</a></li>
+      <li><a href="index.html#lieu">Le lieu</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <span class="page-tag" id="places-tag">5 places disponibles</span>
+      <h1 class="page-title">Prenons <em>contact</em></h1>
+      <p class="page-subtitle">
+        Une question, une visite à organiser ? Betty et Élodie vous répondent avec plaisir.
+        N'hésitez pas à appeler directement ou à envoyer un message.
+      </p>
+    </div>
+  </div>
+
+  <div class="contact-layout">
+
+    <!-- GAUCHE -->
+    <div class="contact-infos reveal">
+
+      <div class="info-card">
+        <div class="info-icon">📞</div>
+        <div>
+          <h3>Téléphone</h3>
+          <a href="tel:+33620213891">Betty — 06 20 21 38 91</a>
+          <a href="tel:+33671366549">Élodie — 06 71 36 65 49</a>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">✉️</div>
+        <div>
+          <h3>E-mail</h3>
+          <a href="mailto:mamloralouet@gmail.com">mamloralouet@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">📍</div>
+        <div>
+          <h3>Adresse</h3>
+          <p>1 Les Grandes Alloteries<br/>53380 Juvigné — Mayenne</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon">🕐</div>
+        <div>
+          <h3>Horaires d'ouverture</h3>
+          <p>Lundi au vendredi · 6h00 – 19h00</p>
+        </div>
+      </div>
+
+      <div class="map-card">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2647.8!2d-1.02714!3d48.19352!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x480ef00000000001%3A0x1!2s1+Les+Grandes+Alloteries%2C+53380+Juvign%C3%A9%2C+France!5e0!3m2!1sfr!2sfr!4v1"
+          allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="MAM Loralouet' – 1 Les Grandes Alloteries, Juvigné">
+        </iframe>
+        <div class="map-card-footer">
+          <span>1 Les Grandes Alloteries, 53380 Juvigné</span>
+          <a class="map-link" href="https://maps.google.com/?q=1+Les+Grandes+Alloteries+53380+Juvigne+France" target="_blank" rel="noopener">Ouvrir dans Maps →</a>
+        </div>
+      </div>
+
+      <div class="docs-block">
+        <h4>Documents administratifs</h4>
+        <a class="doc-link" href="reglement-parents.pdf" target="_blank">Règlement de fonctionnement — destiné aux parents</a>
+        <a class="doc-link" href="reglement-general.pdf" target="_blank">Règlement général de la MAM</a>
+      </div>
+
+    </div>
+
+    <!-- DROITE -->
+    <div class="right-col reveal">
+
+      <div class="form-card">
+        <h2>Envoyer un <em>message</em></h2>
+        <p>Pour une question ou organiser une visite — on vous répond rapidement !</p>
+
+        <form id="contact-form" action="https://formspree.io/f/VOTRE_ID_FORMSPREE" method="POST">
+          <div class="form-row">
+            <div>
+              <label for="prenom">Prénom</label>
+              <input type="text" id="prenom" name="prenom" placeholder="Marie" required />
+            </div>
+            <div>
+              <label for="nom">Nom</label>
+              <input type="text" id="nom" name="nom" placeholder="Dupont" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="marie.dupont@email.fr" required />
+          </div>
+          <div class="form-group">
+            <label for="telephone">Téléphone</label>
+            <input type="tel" id="telephone" name="telephone" placeholder="06 00 00 00 00" />
+          </div>
+          <div class="form-group">
+            <label for="message">Votre message</label>
+            <textarea id="message" name="message" placeholder="Bonjour, je souhaite en savoir plus sur…" required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Envoyer le message</button>
+          <p class="form-note">Nous vous répondons dans les meilleurs délais.</p>
+          <div class="success-msg" id="success-msg">
+            ✅ Message envoyé ! Betty ou Élodie vous répondront très bientôt.
+          </div>
+        </form>
+      </div>
+
+      <div class="preinscription-cta">
+        <div class="preinscription-cta-text">
+          <span class="cta-label">Vous êtes convaincu·e ?</span>
+          <h3>Faire une <em>pré-inscription</em></h3>
+          <p>Remplissez notre formulaire pour réserver une place pour votre enfant.</p>
+        </div>
+        <a href="preinscription.html" class="btn-preinscription">Accéder au formulaire →</a>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-logo">MAM Loralouet'</div>
+    <div>1 Les Grandes Alloteries · 53380 Juvigné · Mayenne</div>
+    <div><a href="mentions-legales.html">Mentions légales</a></div>
+  </footer>
+
+  <script>
+    // Reveal au scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Formulaire
+    document.getElementById('contact-form').addEventListener('submit', () => {
+      setTimeout(() => {
+        document.getElementById('success-msg').style.display = 'block';
+        document.getElementById('contact-form').reset();
+      }, 500);
+    });
+
+    // Places dynamiques — tente l'API, sinon garde la valeur par défaut
+    fetch('api.php')
+      .then(r => r.json())
+      .then(data => {
+        const n = data.places;
+        const tag = document.getElementById('places-tag');
+        if (tag) {
+          tag.textContent = n > 0
+            ? n + ' place' + (n > 1 ? 's' : '') + ' disponible' + (n > 1 ? 's' : '')
+            : 'Complet pour le moment';
+        }
+      })
+      .catch(() => {
+        // Pas de PHP en local → on garde "5 places disponibles" affiché par défaut, rien ne casse
+      });
+  </script>
+
+</body>
+</html>
